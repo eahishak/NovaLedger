@@ -15,7 +15,6 @@ NovaLedger is a lightweight crypto-tracking application that demonstrates animat
 #### **1. App Icon**
 The project includes a custom app icon generated from an SVG asset (“NovaLedgerImage”).  
 All three icon sizes were created and placed inside **Assets.xcassets > AppIcon**.
-
 #### **2. Launch Screen**
 The app uses:
 - A custom launch background color (`LaunchBackground`)
