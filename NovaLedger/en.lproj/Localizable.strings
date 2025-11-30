@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   NovaLedger
 
@@ -22,6 +22,6 @@
 
 "action_title" = "Choose an option";
 "option_one" = "Refresh Data";
-"option_two" = "View Market Info";
+"option_two" = "View Market";
 "option_three" = "Price History";
 "cancel" = "Cancel";
