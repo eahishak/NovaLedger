@@ -5,7 +5,6 @@
 **Email:** eahishak@u.rochester.edu  
 
 ---
-
 ## Project 3 – NovaLedger Crypto App
 
 ### Description
