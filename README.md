@@ -22,7 +22,6 @@ The app uses:
 - Centered NovaLedger icon  
 Configured under:
 `TARGET → Info → UILaunchScreen`
-
 #### **3. Custom Colors**
 Two custom colors were added:
 - **AccentColor (#0F5ACC)**  
