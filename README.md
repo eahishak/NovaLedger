@@ -11,7 +11,6 @@
 NovaLedger is a lightweight crypto-tracking application that demonstrates animations, localization, alerts, settings persistence, notifications, and live API integration. The app displays real-time Bitcoin data, market overview metrics, and allows users to configure their experience through a dedicated settings panel.
 
 ### Block I – UI Foundations (20 pts)
-
 #### **1. App Icon**
 The project includes a custom app icon generated from an SVG asset (“NovaLedgerImage”).  
 All three icon sizes were created and placed inside **Assets.xcassets > AppIcon**.
