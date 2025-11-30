@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  NovaLedger
+
+  Created by Ahishakiye, Emmanuel on 11/29/25.
+  
+*/
+
+"app_title" = "NovaLedger";
+
+"button_start" = "Get Started";
+"button_alert" = "Show Alert";
+"button_options" = "Options";
+"button_info" = "App Info";
+"button_settings" = "Settings";
+"button_crypto_status" = "Crypto Status";
+"button_market_overview" = "Market Overview";
+
+"alert_title" = "Notice";
+"alert_message" = "Crypto prices may take a moment to load.";
+"alert_ok" = "OK";
+
+"action_title" = "Choose an option";
+"option_one" = "Refresh Data";
+"option_two" = "View Market Info";
+"option_three" = "Price History";
+"cancel" = "Cancel";
