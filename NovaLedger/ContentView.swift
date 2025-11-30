@@ -8,113 +8,106 @@
 import SwiftUI
 
 struct ContentView: View {
-
-    // Animations
+    
     @State private var titleVisible = false
     @State private var rotateCoin = false
     @State private var bounce = false
-
-    // Step 6 — Alert
     @State private var showAlert = false
-
-    // Step 7 — Action Sheet
     @State private var showActionSheet = false
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 40) {
-
-                // ---- Animation 1: Fade-in title ----
-                Text(NSLocalizedString("app_title", comment: ""))
-                    .font(.largeTitle.bold())
-                    .foregroundColor(Color("PrimaryNavy"))
-                    .opacity(titleVisible ? 1 : 0)
-                    .animation(.easeIn(duration: 1.2), value: titleVisible)
-
-                // ---- Animation 2: Rotating logo ----
-                Image("NovaLedgerImage")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 160)
-                    .rotationEffect(.degrees(rotateCoin ? 360 : 0))
-                    .animation(.linear(duration: 3).repeatForever(autoreverses: false), value: rotateCoin)
-
-                // ---- Animation 3: Bouncing button ----
-                Button(NSLocalizedString("button_start", comment: "")) {
-                    showActionSheet = true
+            ScrollView {
+                VStack(spacing: 30) {
+                    
+                    // Animated title with fade-in effect
+                    Text(NSLocalizedString("app_title", comment: ""))
+                        .font(.largeTitle.bold())
+                        .foregroundColor(Color("PrimaryNavy"))
+                        .opacity(titleVisible ? 1 : 0)
+                        .animation(.easeIn(duration: 1.2), value: titleVisible)
+                    
+                    // Continuously rotating logo
+                    Image("NovaLedgerImage")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 160)
+                        .rotationEffect(.degrees(rotateCoin ? 360 : 0))
+                        .animation(.linear(duration: 3).repeatForever(autoreverses: false), value: rotateCoin)
+                    
+                    // Bouncing start button with action sheet trigger
+                    Button(NSLocalizedString("button_start", comment: "")) {
+                        showActionSheet = true
+                    }
+                    .buttonStyle(PrimaryButtonStyle())
+                    .offset(y: bounce ? -10 : 0)
+                    .animation(.easeInOut(duration: 1).repeatForever(), value: bounce)
+                    
+                    Divider()
+                        .padding(.vertical, 10)
+                    
+                    // Alert demonstration button
+                    Button(NSLocalizedString("button_alert", comment: "")) {
+                        showAlert = true
+                    }
+                    .buttonStyle(SecondaryButtonStyle())
+                    
+                    // Action sheet demonstration button
+                    Button(NSLocalizedString("button_options", comment: "")) {
+                        showActionSheet = true
+                    }
+                    .buttonStyle(SecondaryButtonStyle())
+                    
+                    // Navigation to app info
+                    NavigationLink(destination: InfoView()) {
+                        Text(NSLocalizedString("button_info", comment: ""))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color("PrimaryNavy"))
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
+                    }
+                    
+                    // Navigation to settings
+                    NavigationLink(destination: SettingsView()) {
+                        Text(NSLocalizedString("button_settings", comment: ""))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color("PrimaryNavy"))
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
+                    }
+                    
+                    Divider()
+                        .padding(.vertical, 10)
+                    
+                    // Crypto API views
+                    NavigationLink(destination: CryptoView1()) {
+                        Text(NSLocalizedString("button_crypto_status", comment: ""))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.accentColor)
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
+                    }
+                    
+                    NavigationLink(destination: CryptoView2()) {
+                        Text(NSLocalizedString("button_market_overview", comment: ""))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.accentColor)
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
+                    }
                 }
-                .padding()
-                .background(Color.accentColor)
-                .foregroundColor(.white)
-                .cornerRadius(12)
-                .offset(y: bounce ? -10 : 0)
-                .animation(.easeInOut(duration: 1).repeatForever(), value: bounce)
-
-
-                // ---- Step 6: Alert button ----
-                Button(NSLocalizedString("button_alert", comment: "")) {
-                    showAlert = true
-                }
-                .padding()
-                .background(Color("PrimaryNavy"))
-                .foregroundColor(.white)
-                .cornerRadius(12)
-
-                // ---- Step 7: Action sheet button ----
-                Button(NSLocalizedString("button_options", comment: "")) {
-                    showActionSheet = true
-                }
-                .padding()
-                .background(Color("PrimaryNavy"))
-                .foregroundColor(.white)
-                .cornerRadius(12)
-
-
-                // ---- Step 8: InfoView navigation ----
-                NavigationLink(destination: InfoView()) {
-                    Text(NSLocalizedString("button_info", comment: ""))
-                        .padding()
-                        .background(Color("PrimaryNavy"))
-                        .foregroundColor(.white)
-                        .cornerRadius(12)
-                }
-
-                // ---- Step 9: Settings navigation ----
-                NavigationLink(destination: SettingsView()) {
-                    Text(NSLocalizedString("button_settings", comment: ""))
-                        .padding()
-                        .background(Color("PrimaryNavy"))
-                        .foregroundColor(.white)
-                        .cornerRadius(12)
-                }
-
-                // ---- Step 12: Crypto API View 1 ----
-                NavigationLink(destination: CryptoView1()) {
-                    Text(NSLocalizedString("button_crypto_status", comment: ""))
-                        .padding()
-                        .background(Color("PrimaryNavy"))
-                        .foregroundColor(.white)
-                        .cornerRadius(12)
-                }
-
-                // ---- Step 12: Crypto API View 2 ----
-                NavigationLink(destination: CryptoView2()) {
-                    Text(NSLocalizedString("button_market_overview", comment: ""))
-                        .padding()
-                        .background(Color("PrimaryNavy"))
-                        .foregroundColor(.white)
-                        .cornerRadius(12)
-                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 30)
             }
-            .padding()
             .onAppear {
                 titleVisible = true
                 rotateCoin = true
                 bounce = true
             }
-
-
-            // -------- ALERT (Step 6) --------
             .alert(
                 NSLocalizedString("alert_title", comment: ""),
                 isPresented: $showAlert
@@ -123,20 +116,48 @@ struct ContentView: View {
             } message: {
                 Text(NSLocalizedString("alert_message", comment: ""))
             }
-
-
-            // -------- ACTION SHEET (Step 7) --------
             .confirmationDialog(
                 NSLocalizedString("action_title", comment: ""),
                 isPresented: $showActionSheet,
                 titleVisibility: .visible
             ) {
-                Button(NSLocalizedString("option_one", comment: "")) { }
-                Button(NSLocalizedString("option_two", comment: "")) { }
-                Button(NSLocalizedString("option_three", comment: "")) { }
-                Button(NSLocalizedString("cancel", comment: ""), role: .cancel) { }
+                Button(NSLocalizedString("option_one", comment: "")) {
+                    // Trigger data refresh
+                }
+                Button(NSLocalizedString("option_two", comment: "")) {
+                    // Navigate to market info
+                }
+                Button(NSLocalizedString("option_three", comment: "")) {
+                    // Show price history
+                }
+                Button(NSLocalizedString("cancel", comment: ""), role: .cancel) {}
             }
         }
+    }
+}
+
+// Custom button styles for consistency
+struct PrimaryButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.accentColor)
+            .foregroundColor(.white)
+            .cornerRadius(12)
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+    }
+}
+
+struct SecondaryButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color("PrimaryNavy"))
+            .foregroundColor(.white)
+            .cornerRadius(12)
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
     }
 }
 
