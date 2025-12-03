@@ -53,7 +53,7 @@ struct CryptoView2: View {
                         // 24h high card
                         marketStatCard(
                             title: "24h High",
-                            value: "$\(c.market_data.usdHigh24h, specifier: "%.2f")",
+                            value: String(format: "$%.2f", c.market_data.usdHigh24h),
                             icon: "arrow.up.circle.fill",
                             color: .green
                         )
@@ -61,7 +61,7 @@ struct CryptoView2: View {
                         // 24h low card
                         marketStatCard(
                             title: "24h Low",
-                            value: "$\(c.market_data.usdLow24h, specifier: "%.2f")",
+                            value: String(format: "$%.2f", c.market_data.usdLow24h),
                             icon: "arrow.down.circle.fill",
                             color: .red
                         )
@@ -107,10 +107,10 @@ struct CryptoView2: View {
                                 .frame(height: 10)
                                 
                                 HStack {
-                                    Text("$\(c.market_data.usdLow24h, specifier: "%.2f")")
+                                    Text(String(format: "$%.2f", c.market_data.usdLow24h))
                                         .font(.caption.bold())
                                     Spacer()
-                                    Text("$\(c.market_data.usdHigh24h, specifier: "%.2f")")
+                                    Text(String(format: "$%.2f", c.market_data.usdHigh24h))
                                         .font(.caption.bold())
                                 }
                             }
