@@ -19,7 +19,8 @@ NovaLedger is an iOS application that tracks cryptocurrency prices and market da
 ### App Icon & Launch Screen
 - Custom app icon in all required sizes
 - Launch screen with custom background color and app logo
-
+- The app uses the CoinGecko API to fetch real-time Bitcoin market data:
+https://api.coingecko.com/api/v3/coins/bitcoin
 ### Colors & Design
 - Two custom colors: AccentColor and PrimaryNavy
 - Consistent color scheme throughout the app
