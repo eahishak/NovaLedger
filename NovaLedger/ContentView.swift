@@ -385,3 +385,7 @@ struct PriceHistorySheet: View {
 #Preview {
     ContentView()
 }
+
+#Preview("Price History") {
+    PriceHistorySheet()
+}
